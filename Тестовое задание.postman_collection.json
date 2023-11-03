@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "f41d9237-e19b-48a4-8b53-1946b4c46e98",
+		"name": "Тестовое задание",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26288025",
+		"_collection_link": "https://restless-escape-385222.postman.co/workspace/%25D0%25A2%25D0%25B5%25D1%2581%25D1%2582%25D0%25BE%25D0%25B2%25D0%25BE%25D0%25B5-%25D0%25B7%25D0%25B0%25D0%25B4%25D0%25B0%25D0%25BD%25D0%25B8%25D0%25B5~3ce316c2-bcf7-42d6-b4a9-8a658dab15ff/collection/26288025-f41d9237-e19b-48a4-8b53-1946b4c46e98?action=share&source=collection_link&creator=26288025"
+	},
+	"item": [
+		{
+			"name": "Create issues",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.github+json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Issue 1\",\n    \"body\": \"Something went wrong\",\n    \"labels\": [\n        \"bug\"\n    ],\n    \"assignees\": [\n        \"Portfolio-Leyla\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/test/issues?owner=Portfolio-Leyla&repo=test",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"test",
+						"issues"
+					],
+					"query": [
+						{
+							"key": "owner",
+							"value": "Portfolio-Leyla"
+						},
+						{
+							"key": "repo",
+							"value": "test"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of Issues",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.github+json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"title\":\"Issue 1\",\n\"body\": \"Something went wrong\",\n\"labels\": [\"bug\"],\n\"assignees\": [\"Portfolio-Leyla\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/test/issues",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"test",
+						"issues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Changing the name of issues",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.github+json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"token\":\"{{token}}\",\n\"title\":\"Issue 2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/test/issues/3",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"test",
+						"issues",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lock an issues",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.github+json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"token\":\"{{token}}\",\n\"owner\": \"Portfolio-Leyla\",\n\"repo\": \"test\",\n\"issue_number\":3,\n\"lock_reason\":\"resolved\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/test/issues/3/lock",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"test",
+						"issues",
+						"3",
+						"lock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unlock an issues",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.github+json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"token\":\"{{token}}\",\n\"owner\": \"Portfolio-Leyla\",\n\"repo\": \"test\",\n\"issue_number\":3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/test/issues/3/lock",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"test",
+						"issues",
+						"3",
+						"lock"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "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",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "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",
+			"type": "string"
+		},
+		{
+			"key": "baseUrl",
+			"value": "https://api.github.com/repos/Portfolio-Leyla",
+			"type": "string"
+		}
+	]
+}
